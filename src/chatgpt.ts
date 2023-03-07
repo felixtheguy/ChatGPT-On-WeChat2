@@ -35,7 +35,7 @@ export class ChatGPTBot {
   chatgptTriggerKeyword: string = Config.chatgptTriggerKeyword;
 
   // ChatGPT error response
-  chatgptErrorMessage: string = "🤖️：江苏宁摆烂了，请稍后再试～";
+  chatgptErrorMessage: string = "🤖️：ChatGPT摆烂了，请稍后再试～";
 
   // ChatGPT model configuration
   // please refer to the OpenAI API doc: https://beta.openai.com/docs/api-reference/introduction
@@ -177,13 +177,7 @@ export class ChatGPTBot {
     ];
     return messages;
   }
-// handle message for customized task handlers
-  async onCustimzedTask(message: Message) {
-    // e.g. if a message starts with "麦扣", the bot sends "🤖️：call我做咩啊大佬!"
-    if (message.text().startsWith("苏江宁是谁")) {
-      await message.say("一个在群里发红包一点都不积极的，没事就要被开水烫一下的人");
-      return;
-    }
+
   // send question to ChatGPT with OpenAI API and get answer
   private async onChatGPT(text: string): Promise<string> {
     const inputMessages = this.createMessages(text);
@@ -275,15 +269,19 @@ export class ChatGPTBot {
     }
   }
 
+  // handle message for customized task handlers
+  async onCustimzedTask(message: Message) {
+    // e.g. if a message starts with "麦扣", the bot sends "🤖️：call我做咩啊大佬!"
   
-//     const myKeyword = "苏江宁是谁";
-//     if (message.text().includes(myKeyword)) {
-//       const myTaskContent = `回复所有含有"${myKeyword}"的消息`;
-//       const myReply = "是个傻子不用理他";
-//       await message.say(myReply);
-//       console.log(`🎯 Customized task triggered: ${myTaskContent}`);
-//       console.log(`🤖️ ChatGPT says: ${myReply}`);
-//       return;
-//     }
+   
+    const myKeyword = "";
+    if (message.text().includes(myKeyword)) {
+      const myTaskContent = `回复所有含有"${myKeyword}"的消息`;
+      const myReply = "";
+      await message.say(myReply);
+      console.log(`🎯 Customized task triggered: ${myTaskContent}`);
+      console.log(`🤖️ ChatGPT says: ${myReply}`);
+      return;
+    }
   }
 }
