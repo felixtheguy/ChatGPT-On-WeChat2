@@ -272,14 +272,18 @@ export class ChatGPTBot {
   // handle message for customized task handlers
   async onCustimzedTask(message: Message) {
     // e.g. if a message starts with "麦扣", the bot sends "🤖️：call我做咩啊大佬!"
-    const myKeyword = "苏江宁是谁";
-    if (message.text().includes(myKeyword)) {
-      const myTaskContent = `回复所有含有"${myKeyword}"的消息`;
-      const myReply = "是个傻子不用理他";
-      await message.say(myReply);
-      console.log(`🎯 Customized task triggered: ${myTaskContent}`);
-      console.log(`🤖️ ChatGPT says: ${myReply}`);
+    if (message.text().startsWith("苏江宁是谁")) {
+      await message.say("是个傻子不用理他");
       return;
     }
+//     const myKeyword = "苏江宁是谁";
+//     if (message.text().includes(myKeyword)) {
+//       const myTaskContent = `回复所有含有"${myKeyword}"的消息`;
+//       const myReply = "是个傻子不用理他";
+//       await message.say(myReply);
+//       console.log(`🎯 Customized task triggered: ${myTaskContent}`);
+//       console.log(`🤖️ ChatGPT says: ${myReply}`);
+//       return;
+//     }
   }
 }
